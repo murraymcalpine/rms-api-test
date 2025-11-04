@@ -9,7 +9,7 @@ described in the API section below."
 
 To run the tests locally, you'll need:
 
-- [Node.js](https://nodejs.org/) (v20 or higher recommended)
+- [Node.js](https://nodejs.org/) (v20, 22 or >=24 recommended)
 - [npm](https://www.npmjs.com/) (comes with Node.js)
 - Git (to clone the repository)
 
@@ -36,8 +36,12 @@ To run the tests locally, you'll need:
    ```bash
    npm install --save-dev cucumber-html-reporter
    ```
+5. **Set the Node Version (using v20 in this example)**
+    ```bash
+   nvm use 20
+   ```
 
-5. **Run the Tests**
+6. **Run the Tests**
    ```bash
    node runner.js
    ```   

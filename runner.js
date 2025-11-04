@@ -1,7 +1,13 @@
 const { exec } = require('child_process');
+const path = require('path');
 const reporter = require('cucumber-html-reporter');
 
-exec('npx cucumber-js --format json:report/cucumber_report.json', (error, stdout, stderr) => {
+// Generate timestamp for unique filename
+const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+const jsonReportPath = path.join('report', `cucumber_report_${timestamp}.json`);
+const htmlReportPath = path.join('report', `cucumber_report_${timestamp}.html`);
+
+exec(`npx cucumber-js --format json:${jsonReportPath}`, (error, stdout, stderr) => {
   if (error) {
     console.error(`❌ Test run failed:\n${error.message}`);
     return;
@@ -13,11 +19,10 @@ exec('npx cucumber-js --format json:report/cucumber_report.json', (error, stdout
 
   console.log(`✅ Test run complete:\n${stdout}`);
 
-  // Generate HTML report
   const options = {
     theme: 'bootstrap',
-    jsonFile: 'report/cucumber_report.json',
-    output: 'report/cucumber_report.html',
+    jsonFile: jsonReportPath,
+    output: htmlReportPath,
     reportSuiteAsScenarios: true,
     launchReport: true,
     metadata: {

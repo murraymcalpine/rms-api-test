@@ -1,0 +1,185 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "verify-the-date-in-the-response-header;scenario-3-response-header-checks",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Scenario 3 response header checks",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I send a GET request to the API for \"Scenario 3\"",
+            "match": {
+              "location": "features/step_definitions/shared.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 266583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 5,
+            "name": "The header date field has been populated",
+            "match": {
+              "location": "features/step_definitions/scenarioThree.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 76833
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "the header date field is valid",
+            "match": {
+              "location": "features/step_definitions/scenarioThree.steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 67000
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "verify-the-date-in-the-response-header",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Verify the date in the response header",
+    "tags": [],
+    "uri": "features/sceanrioThree.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "check-the-contents-of-the-response;scenario-2-response-content-checks",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Scenario 2 response content checks",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I send a GET request to the API for \"Scenario 2\"",
+            "match": {
+              "location": "features/step_definitions/shared.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 5,
+            "name": "no entries have an Empty or Null ID field",
+            "match": {
+              "location": "features/step_definitions/scenarioTwo.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 66332
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "only one entry has TRUE next to \"now_playing\"",
+            "match": {
+              "location": "features/step_definitions/scenarioTwo.steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 57457
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "check-the-contents-of-the-response",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Check the contents of the response",
+    "tags": [],
+    "uri": "features/sceanrioTwo.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "check-response-behaviour;scenario-1-response-checks",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Scenario 1 response checks",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I send a GET request to the API for \"Scenario 1\"",
+            "match": {
+              "location": "features/step_definitions/shared.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 50375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 5,
+            "name": "the response returned is 200",
+            "match": {
+              "location": "features/step_definitions/scenarioOne.steps.js:3"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 58665
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "the response time is under 1000 miliseconds",
+            "match": {
+              "location": "features/step_definitions/scenarioOne.steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 68250
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "check-response-behaviour",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Check Response behaviour",
+    "tags": [],
+    "uri": "features/scenarioOne.feature"
+  }
+]

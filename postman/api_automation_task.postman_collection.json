@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "c5c14bee-f4aa-4de4-a009-ddc8f5d286ce",
+		"name": "API Automation Task - Senior Tester Role",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24246039",
+		"_collection_link": "https://speeding-satellite-50934.postman.co/workspace/Murray's-DPUB-Work~2a064462-9f38-4820-8990-4b78524caf65/collection/24246039-c5c14bee-f4aa-4de4-a009-ddc8f5d286ce?action=share&source=collection_link&creator=24246039"
+	},
+	"item": [
+		{
+			"name": "Scenario 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{rmsTestUrl}}",
+					"host": [
+						"{{rmsTestUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scenario 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();",
+							"",
+							"pm.test(\"ID field is never empty or null\", function () {",
+							"    //Loop through the response checking each entry",
+							"    for (let i = 0; i < jsonData.length; i++){",
+							"        let id = jsonData[i].id;",
+							"        //Verifies each id is populated but if one is not null etc then return meaningful error.",
+							"        pm.expect(id, 'item ${i} has an invalid ID').to.not.be.oneOf([null, \"\", undefined]);",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"Only one track has 'True' next to 'now_playing'\"), function() {",
+							"    //Set variable to cound how many tracks have now_playing set to true.",
+							"    let nowPlayingCount = 0;",
+							"    //build loop to work through each entry in the response",
+							"    for (let i = 0; i < jsonData.length; i++) {",
+							"        //if statment to check if the offset.now_playing is true then add one the count.",
+							"        if (jsonData[i].offset && jsonData[i].offset.now_playing === true) {",
+							"            nowPlayingCount++;",
+							"        }",
+							"    }",
+							"    //Checking that the count only has one entry.",
+							"    pm.expect(nowPlayingCount, \"Only one track with now_playing should have true\").to.eql(1);",
+							"};"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{rmsTestUrl}}",
+					"host": [
+						"{{rmsTestUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Scenario 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response has a valid date header\", function () {",
+							"    //Find and store the date header",
+							"    let dateHeader = pm.response.headers.get(\"Date\");",
+							"",
+							"    //Confirm that the date header is present, return meanigful error if it is missing",
+							"    pm.expect(dateHeader, \"Date header is missing\").to.not.be.null;",
+							"",
+							"    //Check that the date is valid",
+							"    let checkDate = new Date(dateHeader);",
+							"    pm.expect(checkDate.toString(), \"Date head is not valid date\").to.not.eql(\"invalid date\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{rmsTestUrl}}",
+					"host": [
+						"{{rmsTestUrl}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "rmsTestUrl",
+			"value": "https://testapi.io/api/RMSTest/media",
+			"type": "default"
+		}
+	]
+}
